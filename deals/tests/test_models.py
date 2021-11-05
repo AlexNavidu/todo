@@ -20,6 +20,19 @@ class TaskModelTest(TestCase):
             text='Тестовый текст'
         )
 
+    def test_title_label(self):
+        """verbose_name поля title совпадает с ожидаемым."""
+        task = TaskModelTest.task
+        # Получаем из свойста класса Task значение verbose_name для title
+        verbose = task._meta.get_field('title').verbose_name
+        self.assertEqual(verbose, 'Заголовок')
+
+    def test_title_help_text(self):
+        """help_text поля title совпадает с ожидаемым."""
+        task = TaskModelTest.task
+        help_text = task._meta.get_field('title').help_text
+        self.assertEqual(help_text, 'Дайте короткое название задаче')
+
     def test_verbose_name(self):
         """verbose_name в полях совпадает с ожидаемым."""
         task = TaskModelTest.task
